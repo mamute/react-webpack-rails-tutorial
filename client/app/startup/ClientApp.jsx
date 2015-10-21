@@ -1,17 +1,20 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import Router from 'react-router';
+import createHistory from 'history/lib/createBrowserHistory';
 
 import createStore from '../stores/commentsStore';
-import CommentScreen from '../components/CommentScreen';
+import routes from '../routes/routes';
 
 const App = props => {
   const store = createStore(props);
-  const reactComponent = (
+  const history = createHistory();
+
+  return (
     <Provider store={store}>
-      <CommentScreen />
+      <Router history={history} children={routes} />
     </Provider>
   );
-  return reactComponent;
 };
 
 // Export is needed for the hot reload server

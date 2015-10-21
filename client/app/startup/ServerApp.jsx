@@ -1,17 +1,38 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { match, RoutingContext } from 'react-router';
 
 import createStore from '../stores/commentsStore';
-import CommentScreen from '../components/CommentScreen';
+import routes from '../routes/routes';
 
-const App = props => {
+const App = (props, location) => {
   const store = createStore(props);
-  const reactComponent = (
+
+  let routeError
+  let routeRedirect;
+  let routeProps;
+
+  match({ routes, location }, (_routeError, _routeRedirect, _routeProps) => {
+    routeError = _routeError;
+    routeRedirect = _routeRedirect;
+    routeProps = _routeProps;
+  });
+
+  if (routeError) {
+    // TODO: We should handle errors from router inside `react_on_rails` gem
+    return { routeError };
+  }
+
+  if (routeRedirect) {
+    // TODO: We should handle redirects from router inside `react_on_rails` gem
+    return { routeRedirect };
+  }
+
+  return (
     <Provider store={store}>
-      <CommentScreen />
+      <RoutingContext {...routeProps} />
     </Provider>
   );
-  return reactComponent;
 };
 
 export default App;
