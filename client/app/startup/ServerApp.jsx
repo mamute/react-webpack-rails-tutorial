@@ -20,11 +20,14 @@ const App = (props, location) => {
 
   if (routeError) {
     // TODO: We should handle errors from router inside `react_on_rails` gem
+    //       routeError: { message: "Error message <String>" }
     return { routeError };
   }
 
   if (routeRedirect) {
     // TODO: We should handle redirects from router inside `react_on_rails` gem
+    //       routeRedirect: { pathname: "Path <String>", search: "Query <String>" }
+    //       redirectTo = routeRedirect.pathname + routeRedirect.search
     return { routeRedirect };
   }
 
