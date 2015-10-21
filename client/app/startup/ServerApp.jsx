@@ -8,7 +8,7 @@ import routes from '../routes/routes';
 const App = (props, location) => {
   const store = createStore(props);
 
-  let routeError
+  let routeError;
   let routeRedirect;
   let routeProps;
 
