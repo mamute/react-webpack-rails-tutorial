@@ -13,7 +13,7 @@ export default class Layout extends React.Component {
         <header>
           <ul>
             <li><Link to="/">Comments</Link></li>
-            <li><Link to="/about">About</Link></li>
+            <li><Link to="/test-react-router">Test React Router</Link></li>
           </ul>
         </header>
         {this.props.children}

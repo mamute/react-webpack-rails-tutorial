@@ -5,7 +5,7 @@ describe "Server Rendering" do
     get root_path
     html_nodes = Nokogiri::HTML(response.body)
     expect(html_nodes.css("div#App-react-component-0").children.size).to eq(1)
-    expect(html_nodes.css("div#App-react-component-0 h2").text)
+    expect(html_nodes.css("div#App-react-component-0 section h2").text)
       .to include("Comments")
   end
 
