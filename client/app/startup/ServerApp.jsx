@@ -21,7 +21,7 @@ const App = (props, location) => {
   if (routeError) {
     // TODO: We should handle errors from router inside `react_on_rails` gem
     //       routeError: { message: "Error message <String>" }
-    return { routeError };
+    throw new Error(routeError.message);
   }
 
   if (routeRedirect) {
