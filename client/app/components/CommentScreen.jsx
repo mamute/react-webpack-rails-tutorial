@@ -15,13 +15,29 @@ const CommentScreen = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
+    location: PropTypes.shape({
+      state: PropTypes.object,
+    }).isRequired,
+  },
+
+  _renderNotification() {
+    const locationState = this.props.location.state;
+    if (!locationState || !locationState.redirectFrom) return null;
+
+    return (
+      <div className="notification bg-success">
+        You've been redirected from <strong>{locationState.redirectFrom}</strong>
+      </div>
+    );
   },
 
   render() {
     const { dispatch, data } = this.props;
     const actions = bindActionCreators(commentsActionCreators, dispatch);
+
     return (
       <div>
+        {::this._renderNotification()}
         <CommentBox
           pollInterval={5000}
           data={data}

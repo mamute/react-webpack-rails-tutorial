@@ -26,7 +26,13 @@ const App = (props, location) => {
 
   if (routeRedirect) {
     // TODO: We should handle redirects from router inside `react_on_rails` gem
-    //       routeRedirect: { pathname: "Path <String>", search: "Query <String>" }
+    //       routeRedirect: {
+    //         pathname: "Path <String>",
+    //         search: "Query <String>",
+    //         hash: "Hash <string>",
+    //         state: "Custom State <Object>",
+    //         ...
+    //        }
     //       redirectTo = routeRedirect.pathname + routeRedirect.search
     return { routeRedirect };
   }
